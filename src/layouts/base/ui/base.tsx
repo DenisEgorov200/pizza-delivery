@@ -1,5 +1,7 @@
+import { $foods } from '@entities/card-food/model'
 import { Button } from '@shared/ui/button'
 import { MenuBurger } from '@shared/ui/menu-burger'
+import { useUnit } from 'effector-react'
 import { ReactNode } from 'react'
 
 const LINKS = [
@@ -21,6 +23,8 @@ interface Props {
 }
 
 export const LayoutBase = ({ children }: Props) => {
+  const foods = useUnit($foods)
+
   return (
     <div className="flex h-full w-dvw flex-col">
       <header className="py-5">
@@ -45,7 +49,7 @@ export const LayoutBase = ({ children }: Props) => {
                 8 499 391-84-49
               </a>
               <Button className="text-brown max-md:hidden min-[1536px]:hidden">
-                Корзина <span className="mx-3.5">|</span> 1
+                Корзина <span className="mx-3.5">|</span> {foods.length}
               </Button>
               <MenuBurger className="min-[1536px]:hidden" />
             </div>
@@ -61,7 +65,7 @@ export const LayoutBase = ({ children }: Props) => {
             <div className="flex items-center gap-7">
               <Button intent="empty">Войти</Button>
               <Button className="text-brown">
-                Корзина <span className="mx-3.5">|</span> 1
+                Корзина <span className="mx-3.5">|</span> {foods.length}
               </Button>
             </div>
           </div>

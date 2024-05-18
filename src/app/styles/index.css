@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+
+@layer base {
+  :root {
+    --black-100: #0E0C0D;
+    --black-200: #231F20;
+
+    --gray-100: #686466;
+    --gray-200: #797979;
+    --gray-300: #696F7A;
+
+    --blue: #E3ECF5;
+
+    --yellow: #F7D22D;
+  }
+}

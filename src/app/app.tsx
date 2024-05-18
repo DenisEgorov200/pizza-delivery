@@ -1,9 +1,10 @@
 import { LayoutBase } from '@layouts/base'
+import { Catalog } from '@widgets/catalog'
 
 export const App = () => {
   return (
     <LayoutBase>
-      <h1>Hello World</h1>
+      <Catalog />
     </LayoutBase>
   )
 }

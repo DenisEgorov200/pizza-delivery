@@ -14,13 +14,15 @@ export default {
 
         gray: {
           100: 'var(--gray-100)',
-          100: 'var(--gray-200)',
-          200: 'var(--gray-300)'
+          200: 'var(--gray-200)',
+          300: 'var(--gray-300)'
         },
         
         blue: 'var(--blue)',
 
-        yellow: 'var(--yellow)'
+        yellow: 'var(--yellow)',
+
+        brown: 'var(--brown)'
       }
     },
   },

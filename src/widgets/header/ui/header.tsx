@@ -1,3 +1,5 @@
+import { Button } from '@shared/ui/button'
+
 const LINKS = [
   { id: 0, value: 'Пицца' },
   { id: 1, value: 'Паста' },
@@ -41,7 +43,9 @@ export const Header = () => {
               </ul>
             </div>
             <div className="flex items-center gap-7">
-              <button>Заказать звонок</button>
+              <Button intent="secondary">
+                <a href="tel:84993918449">Заказать звонок</a>
+              </Button>
               <a
                 href="tel:84993918449"
                 className="text-2xl font-bold text-yellow"
@@ -60,8 +64,10 @@ export const Header = () => {
             ))}
           </ul>
           <div className="flex items-center gap-7">
-            <button>Войти</button>
-            <button>Корзина | 1</button>
+            <Button intent="empty">Войти</Button>
+            <Button className="text-brown">
+              Корзина <span className="mx-3.5">|</span> 1
+            </Button>
           </div>
         </div>
       </div>

@@ -19,6 +19,13 @@ const button = cva([''], {
         'hover:text-brown',
       ],
       empty: ['text-bold', 'text-gray-300'],
+      thirdly: [
+        'border',
+        'border-blue',
+        'rounded-xl',
+        'transition-colors',
+        'hover:bg-blue',
+      ],
     },
     size: {
       small: ['text-sm', 'font-bold', 'py-1', 'px-6'],

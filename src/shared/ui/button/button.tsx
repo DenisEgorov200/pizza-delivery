@@ -1,7 +1,7 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 import { ButtonHTMLAttributes, ReactNode } from 'react'
 
-const button = cva([''], {
+const button = cva(['text-center'], {
   variants: {
     intent: {
       primary: [

@@ -4,13 +4,13 @@ import { createBrowserHistory } from 'history'
 import { appStarted } from './init'
 
 export const routes = {
-  catalog: createRoute(),
+  home: createRoute(),
 }
 
 export const mappedRoutes = [
   {
-    route: routes.catalog,
-    path: '/catalog',
+    route: routes.home,
+    path: '/',
   },
 ]
 

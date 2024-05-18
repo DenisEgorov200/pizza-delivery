@@ -1,3 +1,9 @@
+import { Catalog } from '@widgets/catalog'
+
 export const Home = () => {
-  return <div>home</div>
+  return (
+    <>
+      <Catalog />
+    </>
+  )
 }

@@ -1,10 +1,11 @@
-import { LayoutBase } from '@layouts/base'
-import { Catalog } from '@widgets/catalog'
+import { Pages } from '@pages/index'
+import { router } from '@shared/config/routes'
+import { RouterProvider } from 'atomic-router-react'
 
 export const App = () => {
   return (
-    <LayoutBase>
-      <Catalog />
-    </LayoutBase>
+    <RouterProvider router={router}>
+      <Pages />
+    </RouterProvider>
   )
 }

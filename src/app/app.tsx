@@ -1,11 +1,9 @@
-import { Footer } from '@widgets/footer'
-import { Header } from '@widgets/header'
+import { LayoutBase } from '@layouts/base'
 
 export const App = () => {
   return (
-    <>
-      <Header />
-      <Footer />
-    </>
+    <LayoutBase>
+      <h1>Hello World</h1>
+    </LayoutBase>
   )
 }

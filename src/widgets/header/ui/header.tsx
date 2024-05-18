@@ -1,4 +1,5 @@
 import { Button } from '@shared/ui/button'
+import { MenuBurger } from '@shared/ui/menu-burger'
 
 const LINKS = [
   { id: 0, value: 'Пицца' },
@@ -17,45 +18,33 @@ const LINKS = [
 export const Header = () => {
   return (
     <header className="py-5">
-      <div className="container mx-auto flex w-full flex-col gap-5">
-        <div className="flex w-full items-center gap-12">
-          <a href="#">
-            <img src="/icons/logo.svg" alt="fibo" />
-          </a>
-          <div className="flex flex-1 items-center justify-between">
-            <div className="flex flex-col gap-1">
-              <h1 className="text-xl font-semibold text-black-200">
-                Доставка пасты <span className="text-yellow">Москва</span>
-              </h1>
-              <ul className="flex items-center gap-5 font-bold">
-                <li className="flex items-center gap-1.5">
-                  <img src="/icons/yandex.svg" alt="yandex" />
-                  <p>Яндекс еда</p>
-                  <p className="flex items-center">
-                    4.8{' '}
-                    <img src="/icons/star.svg" alt="star" className="ml-1" />
-                  </p>
-                </li>
-                <li className="flex items-center gap-1">
-                  <p>Время доставки</p>
-                  <p>от 31 мин</p>
-                </li>
-              </ul>
-            </div>
-            <div className="flex items-center gap-7">
-              <Button intent="secondary">
-                <a href="tel:84993918449">Заказать звонок</a>
-              </Button>
-              <a
-                href="tel:84993918449"
-                className="text-2xl font-bold text-yellow"
-              >
-                8 499 391-84-49
-              </a>
-            </div>
+      <div className="container mx-auto px-2.5">
+        <div className="flex w-full items-center justify-between">
+          <div className="flex items-center gap-12">
+            <a href="#">
+              <img src="/icons/logo.svg" alt="fibo" />
+            </a>
+            <h1 className="text-xl font-semibold text-black-200 max-lg:hidden">
+              Доставка пасты <span className="text-yellow">Москва</span>
+            </h1>
+          </div>
+          <div className="flex items-center gap-7">
+            <Button intent="secondary" className="max-[1536px]:hidden">
+              <a href="tel:84993918449">Заказать звонок</a>
+            </Button>
+            <a
+              href="tel:84993918449"
+              className="text-2xl font-bold text-yellow max-sm:hidden"
+            >
+              8 499 391-84-49
+            </a>
+            <Button className="text-brown max-md:hidden min-[1536px]:hidden">
+              Корзина <span className="mx-3.5">|</span> 1
+            </Button>
+            <MenuBurger className="min-[1536px]:hidden" />
           </div>
         </div>
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between max-2xl:hidden">
           <ul className="flex items-center gap-8 font-semibold text-black-100">
             {LINKS.map((link) => (
               <li key={link.id}>

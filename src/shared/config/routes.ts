@@ -5,12 +5,17 @@ import { appStarted } from './init'
 
 export const routes = {
   home: createRoute(),
+  cart: createRoute(),
 }
 
 export const mappedRoutes = [
   {
     route: routes.home,
     path: '/',
+  },
+  {
+    route: routes.cart,
+    path: '/cart',
   },
 ]
 

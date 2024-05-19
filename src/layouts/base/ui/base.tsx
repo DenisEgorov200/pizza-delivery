@@ -1,6 +1,8 @@
 import { $foods } from '@entities/card-food/model'
+import { routes } from '@shared/config/routes'
 import { Button } from '@shared/ui/button'
 import { MenuBurger } from '@shared/ui/menu-burger'
+import { Link } from 'atomic-router-react'
 import { useUnit } from 'effector-react'
 import { ReactNode } from 'react'
 
@@ -31,9 +33,9 @@ export const LayoutBase = ({ children }: Props) => {
         <div className="container mx-auto px-2.5">
           <div className="flex w-full items-center justify-between">
             <div className="flex items-center gap-12">
-              <a href="#">
+              <Link to={routes.home}>
                 <img src="/icons/logo.svg" alt="fibo" />
-              </a>
+              </Link>
               <h1 className="text-xl font-semibold text-black-200 max-lg:hidden">
                 Доставка пасты <span className="text-yellow">Москва</span>
               </h1>
@@ -48,9 +50,11 @@ export const LayoutBase = ({ children }: Props) => {
               >
                 8 499 391-84-49
               </a>
-              <Button className="text-brown max-md:hidden min-[1536px]:hidden">
-                Корзина <span className="mx-3.5">|</span> {foods.length}
-              </Button>
+              <Link to={routes.cart}>
+                <Button className="text-brown">
+                  Корзина <span className="mx-3.5">|</span> {foods.length}
+                </Button>
+              </Link>
               <MenuBurger className="min-[1536px]:hidden" />
             </div>
           </div>
@@ -64,9 +68,11 @@ export const LayoutBase = ({ children }: Props) => {
             </ul>
             <div className="flex items-center gap-7">
               <Button intent="empty">Войти</Button>
-              <Button className="text-brown">
-                Корзина <span className="mx-3.5">|</span> {foods.length}
-              </Button>
+              <Link to={routes.cart}>
+                <Button className="text-brown">
+                  Корзина <span className="mx-3.5">|</span> {foods.length}
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -74,9 +80,9 @@ export const LayoutBase = ({ children }: Props) => {
       <main className="container mx-auto flex-1 px-2.5">{children}</main>
       <footer className="py-5">
         <div className="container mx-auto flex items-center justify-between gap-4 px-2.5 max-sm:flex-col">
-          <a href="#">
+          <Link to={routes.home}>
             <img src="/icons/logo.svg" alt="fibo" />
-          </a>
+          </Link>
           <div className="flex flex-col items-center">
             <h3 className="mb-4 font-bold uppercase text-black-100">
               Остались вопросы? А мы всегда на связи:

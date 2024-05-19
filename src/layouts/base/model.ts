@@ -34,8 +34,3 @@ sample({
   source: { email: $email },
   target: [$error.reinit, signInFx],
 })
-
-sample({
-  clock: foodsSubmitted,
-  target: [foodsToCartFx],
-})

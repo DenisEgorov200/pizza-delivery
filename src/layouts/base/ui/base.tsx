@@ -1,13 +1,13 @@
 import { $foods } from '@entities/card-food/model'
 import { routes } from '@shared/config/routes'
 import { Button } from '@shared/ui/button'
+import { Input } from '@shared/ui/input'
 import { MenuBurger } from '@shared/ui/menu-burger'
+import { Modal } from '@shared/ui/modal'
 import { Link } from 'atomic-router-react'
 import { useUnit } from 'effector-react'
 import { ReactNode, useState } from 'react'
-import { $phone, foodsSubmitted, formSubmitted, phoneChanged } from '../model'
-import { Modal } from '@shared/ui/modal'
-import { Input } from '@shared/ui/input'
+import { $email, emailChanged, foodsSubmitted, formSubmitted } from '../model'
 
 const LINKS = [
   { id: 0, value: 'Пицца' },
@@ -31,8 +31,8 @@ export const LayoutBase = ({ children }: Props) => {
   const foods = useUnit($foods)
   const handleFoods = useUnit(foodsSubmitted)
 
-  const [phone] = useUnit([$phone])
-  const [handleFormSubmit, handlePhone] = useUnit([formSubmitted, phoneChanged])
+  const [email] = useUnit([$email])
+  const [handleFormSubmit, handleEmail] = useUnit([formSubmitted, emailChanged])
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -123,15 +123,22 @@ export const LayoutBase = ({ children }: Props) => {
           <h2 className="mb-10 text-3xl font-extrabold text-yellow">
             Вход на сайт
           </h2>
-          <form action="" onSubmit={handleFormSubmit}>
+          <form
+            action=""
+            onSubmit={(e) => {
+              e.preventDefault()
+              handleFormSubmit()
+              setIsOpen(false)
+            }}
+          >
             <div className="flex items-center gap-8">
               <label htmlFor="" className="font-semibold text-gray-100">
-                Номер телефона
+                Почта:
               </label>
-              <Input type="text" value={phone} onValue={handlePhone} />
+              <Input type="email" value={email} onValue={handleEmail} />
             </div>
             <div className="mt-10 flex items-center gap-6">
-              <Button className="h-full" onClick={(e) => e.preventDefault()}>
+              <Button type="submit" className="h-full">
                 Выслать код
               </Button>
               <p className="max-w-96 font-semibold text-gray-100">

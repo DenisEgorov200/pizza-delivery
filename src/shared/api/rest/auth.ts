@@ -2,10 +2,16 @@ import { createEffect } from 'effector'
 import { client } from '../client'
 import { checkError } from './common'
 
-export const signInWithPhoneFx = createEffect(async ({ phone }) => {
-  const { error } = await client.auth.signInWithOtp({
-    phone,
-  })
+export const signInWithEmailFx = createEffect<string, Response, Error>(
+  async ({ email }) => {
+    const baseUrl = document.location.toString()
+    const emailRedirectTo = new URL('/auth/finish', baseUrl).toString()
 
-  checkError(error)
-})
+    const { error } = await client.auth.signInWithOtp({
+      email,
+      options: { emailRedirectTo },
+    })
+
+    checkError(error)
+  },
+)

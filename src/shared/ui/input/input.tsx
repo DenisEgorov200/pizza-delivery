@@ -4,7 +4,7 @@ import { ChangeEvent, InputHTMLAttributes } from 'react'
 interface Props<T extends string>
   extends InputHTMLAttributes<HTMLInputElement> {
   icon?: string
-  onValue?: (value: string, { name }: { name: T }) => void
+  onValue: (value: string, { name }: { name: T }) => void
 }
 
 export const Input = <T extends string>({

@@ -5,7 +5,7 @@ import { MenuBurger } from '@shared/ui/menu-burger'
 import { Link } from 'atomic-router-react'
 import { useUnit } from 'effector-react'
 import { ReactNode, useState } from 'react'
-import { foodsSubmitted } from '../model'
+import { $phone, foodsSubmitted, formSubmitted, phoneChanged } from '../model'
 import { Modal } from '@shared/ui/modal'
 import { Input } from '@shared/ui/input'
 
@@ -30,6 +30,9 @@ interface Props {
 export const LayoutBase = ({ children }: Props) => {
   const foods = useUnit($foods)
   const handleFoods = useUnit(foodsSubmitted)
+
+  const [phone] = useUnit([$phone])
+  const [handleFormSubmit, handlePhone] = useUnit([formSubmitted, phoneChanged])
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -120,15 +123,17 @@ export const LayoutBase = ({ children }: Props) => {
           <h2 className="mb-10 text-3xl font-extrabold text-yellow">
             Вход на сайт
           </h2>
-          <form action="">
+          <form action="" onSubmit={handleFormSubmit}>
             <div className="flex items-center gap-8">
               <label htmlFor="" className="font-semibold text-gray-100">
                 Номер телефона
               </label>
-              <Input type="text" />
+              <Input type="text" value={phone} onValue={handlePhone} />
             </div>
             <div className="mt-10 flex items-center gap-6">
-              <Button className="h-full">Выслать код</Button>
+              <Button className="h-full" onClick={(e) => e.preventDefault()}>
+                Выслать код
+              </Button>
               <p className="max-w-96 font-semibold text-gray-100">
                 Продолжая, вы соглашаетесь со сбором и обработкой персональных
                 данных и пользовательским соглашением

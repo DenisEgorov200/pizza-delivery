@@ -3,6 +3,7 @@ import { Modal } from '@shared/ui/modal'
 import { Catalog } from '@widgets/catalog'
 import { useUnit } from 'effector-react'
 import { $foods } from '../model'
+import { Input } from '@shared/ui/input'
 
 export const Home = () => {
   const foods = useUnit($foods)
@@ -19,7 +20,7 @@ export const Home = () => {
             <label htmlFor="" className="font-semibold text-gray-100">
               Номер телефона
             </label>
-            <input type="text" />
+            <Input type="text" />
           </div>
           <div className="mt-10 flex items-center gap-6">
             <Button className="h-full">Выслать код</Button>

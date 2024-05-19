@@ -20,7 +20,7 @@ export default {
         
         blue: 'var(--blue)',
 
-        yellow: 'var(--yellow)',
+        yellow: 'hsl(var(--yellow))',
 
         brown: 'var(--brown)'
       }

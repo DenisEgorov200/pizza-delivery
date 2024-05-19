@@ -1,3 +1,4 @@
+import { Modal } from '@shared/ui/modal'
 import { Catalog } from '@widgets/catalog'
 import { useUnit } from 'effector-react'
 import { $foods } from '../model'
@@ -8,6 +9,7 @@ export const Home = () => {
   return (
     <>
       <Catalog foods={foods} />
+      <Modal>Hello</Modal>
     </>
   )
 }

@@ -5,6 +5,7 @@ import { MenuBurger } from '@shared/ui/menu-burger'
 import { Link } from 'atomic-router-react'
 import { useUnit } from 'effector-react'
 import { ReactNode } from 'react'
+import { foodsSubmitted } from '../model'
 
 const LINKS = [
   { id: 0, value: 'Пицца' },
@@ -26,6 +27,9 @@ interface Props {
 
 export const LayoutBase = ({ children }: Props) => {
   const foods = useUnit($foods)
+  const handleFoods = useUnit(foodsSubmitted)
+
+  console.log(foods)
 
   return (
     <div className="flex h-full w-dvw flex-col">
@@ -50,8 +54,8 @@ export const LayoutBase = ({ children }: Props) => {
               >
                 8 499 391-84-49
               </a>
-              <Link to={routes.cart}>
-                <Button className="text-brown">
+              <Link to={routes.cart} onClick={() => handleFoods({ foods })}>
+                <Button className="text-brown min-[1536px]:hidden">
                   Корзина <span className="mx-3.5">|</span> {foods.length}
                 </Button>
               </Link>
@@ -68,7 +72,7 @@ export const LayoutBase = ({ children }: Props) => {
             </ul>
             <div className="flex items-center gap-7">
               <Button intent="empty">Войти</Button>
-              <Link to={routes.cart}>
+              <Link to={routes.cart} onClick={() => handleFoods()}>
                 <Button className="text-brown">
                   Корзина <span className="mx-3.5">|</span> {foods.length}
                 </Button>

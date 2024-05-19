@@ -5,15 +5,13 @@ import { not } from 'patronum'
 export type SignInError = 'UnknownError' | 'InvalidEmail' | 'RateLimit'
 
 const signInFx = attach({ effect: api.auth.signInWithEmailFx })
-
-const foodsToCartFx = attach({ effect: api.foods.foodsToCartFx })
+const getMeFx = attach({ effect: api.auth.getMeFx })
 
 export const formSubmitted = createEvent()
 export const emailChanged = createEvent<string>()
 
-export const foodsSubmitted = createEvent()
-
 export const $email = createStore('')
+export const $finished = createStore(false)
 export const $error = createStore<SignInError | null>(null)
 
 const $emailValid = $email.map(
@@ -33,4 +31,18 @@ sample({
   clock: formSubmitted,
   source: { email: $email },
   target: [$error.reinit, signInFx],
+})
+
+$finished.on(signInFx.done, () => true)
+
+$error.on(signInFx.failData, (_, error) => {
+  if (error.status === 429) {
+    return 'RateLimit'
+  }
+  return 'UnknownError'
+})
+
+sample({
+  clock: signInFx,
+  target: getMeFx,
 })

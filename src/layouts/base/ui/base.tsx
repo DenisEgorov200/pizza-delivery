@@ -1,13 +1,11 @@
 import { $foods } from '@entities/card-food/model'
 import { routes } from '@shared/config/routes'
 import { Button } from '@shared/ui/button'
-import { Input } from '@shared/ui/input'
 import { MenuBurger } from '@shared/ui/menu-burger'
-import { Modal } from '@shared/ui/modal'
+import { SignIn } from '@widgets/sign-in'
 import { Link } from 'atomic-router-react'
 import { useUnit } from 'effector-react'
 import { ReactNode, useState } from 'react'
-import { $email, emailChanged, foodsSubmitted, formSubmitted } from '../model'
 
 const LINKS = [
   { id: 0, value: 'Пицца' },
@@ -29,10 +27,6 @@ interface Props {
 
 export const LayoutBase = ({ children }: Props) => {
   const foods = useUnit($foods)
-  const handleFoods = useUnit(foodsSubmitted)
-
-  const [email] = useUnit([$email])
-  const [handleFormSubmit, handleEmail] = useUnit([formSubmitted, emailChanged])
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -118,43 +112,7 @@ export const LayoutBase = ({ children }: Props) => {
           </div>
         </footer>
       </div>
-      {isOpen && (
-        <Modal className="relative">
-          <h2 className="mb-10 text-3xl font-extrabold text-yellow">
-            Вход на сайт
-          </h2>
-          <form
-            action=""
-            onSubmit={(e) => {
-              e.preventDefault()
-              handleFormSubmit()
-              setIsOpen(false)
-            }}
-          >
-            <div className="flex items-center gap-8">
-              <label htmlFor="" className="font-semibold text-gray-100">
-                Почта:
-              </label>
-              <Input type="email" value={email} onValue={handleEmail} />
-            </div>
-            <div className="mt-10 flex items-center gap-6">
-              <Button type="submit" className="h-full">
-                Выслать код
-              </Button>
-              <p className="max-w-96 font-semibold text-gray-100">
-                Продолжая, вы соглашаетесь со сбором и обработкой персональных
-                данных и пользовательским соглашением
-              </p>
-            </div>
-          </form>
-          <div
-            className="absolute right-10 top-10 cursor-pointer"
-            onClick={() => setIsOpen(false)}
-          >
-            <img src="/icons/close.svg" alt="close" />
-          </div>
-        </Modal>
-      )}
+      {isOpen && <SignIn setIsOpen={setIsOpen} />}
     </>
   )
 }

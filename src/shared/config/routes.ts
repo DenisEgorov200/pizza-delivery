@@ -5,6 +5,9 @@ import { appStarted } from './init'
 
 export const routes = {
   home: createRoute(),
+  auth: {
+    finish: createRoute(),
+  },
   cart: createRoute(),
 }
 
@@ -12,6 +15,10 @@ export const mappedRoutes = [
   {
     route: routes.home,
     path: '/',
+  },
+  {
+    route: routes.auth.finish,
+    path: '/auth/finish',
   },
   {
     route: routes.cart,

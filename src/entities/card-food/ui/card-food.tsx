@@ -2,7 +2,14 @@ import { Button } from '@shared/ui/button'
 import { useUnit } from 'effector-react'
 import { foodChanged } from '../model'
 
-export const CardFood = ({ food }) => {
+interface Props {
+  image: string
+  name: string
+  desc: string
+  price: number
+}
+
+export const CardFood = ({ food }: Props) => {
   const handleChanged = useUnit(foodChanged)
 
   return (

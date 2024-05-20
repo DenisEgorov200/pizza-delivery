@@ -21,6 +21,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "save-dev": "^0.0.1-security",
+    "supabase": "^1.167.4",
     "vite-tsconfig-paths": "^4.3.2"
   },
   "devDependencies": {

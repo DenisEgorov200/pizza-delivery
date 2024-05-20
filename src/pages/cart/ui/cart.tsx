@@ -1,9 +1,4 @@
-import { $foods } from '@entities/card-food/model'
-import { useUnit } from 'effector-react'
-
 export const Cart = () => {
-  const foods = useUnit($foods)
-
   return (
     <>
       <h1 className="mb-6 text-3xl font-extrabold text-yellow">Корзина</h1>

@@ -54,7 +54,7 @@ export const LayoutBase = ({ children }: Props) => {
                 >
                   8 499 391-84-49
                 </a>
-                <Link to={routes.cart} onClick={() => handleFoods({ foods })}>
+                <Link to={routes.cart} params={foods}>
                   <Button className="text-brown min-[1536px]:hidden">
                     Корзина <span className="mx-3.5">|</span> {foods.length}
                   </Button>
@@ -74,7 +74,7 @@ export const LayoutBase = ({ children }: Props) => {
                 <Button intent="empty" onClick={() => setIsOpen(true)}>
                   Войти
                 </Button>
-                <Link to={routes.cart} onClick={() => handleFoods()}>
+                <Link to={routes.cart} params={foods}>
                   <Button className="text-brown">
                     Корзина <span className="mx-3.5">|</span> {foods.length}
                   </Button>

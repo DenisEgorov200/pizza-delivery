@@ -1,5 +1,6 @@
 import { createEffect } from 'effector'
 import { client } from '../client'
+import { checkError } from './common'
 
 export const foodsGetFx = createEffect(async () => {
   const { data } = await client.from('foods').select()
@@ -10,12 +11,12 @@ export const foodsGetFx = createEffect(async () => {
 export const foodsToCartFx = createEffect(async ({ foods }) => {
   const { image, name, desc, price } = foods
 
-  const { error } = await client.from('foods').insert({
+  const { error } = await client.from('cart').insert({
     image,
     name,
     desc,
     price,
   })
 
-  return
+  checkError(error)
 })

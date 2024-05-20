@@ -3,10 +3,12 @@ import { useUnit } from 'effector-react'
 import { foodChanged } from '../model'
 
 interface Props {
-  image: string
-  name: string
-  desc: string
-  price: number
+  food: {
+    image: string
+    name: string
+    desc: string
+    price: number
+  }
 }
 
 export const CardFood = ({ food }: Props) => {

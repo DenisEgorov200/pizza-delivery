@@ -45,32 +45,6 @@ export const LayoutBase = ({ children }: Props) => {
                 </h1>
               </div>
               <div className="flex items-center gap-7">
-                <Button intent="secondary" className="max-[1536px]:hidden">
-                  <a href="tel:84993918449">Заказать звонок</a>
-                </Button>
-                <a
-                  href="tel:84993918449"
-                  className="text-2xl font-bold text-yellow max-sm:hidden"
-                >
-                  8 499 391-84-49
-                </a>
-                <Link to={routes.cart} params={foods}>
-                  <Button className="text-brown min-[1536px]:hidden">
-                    Корзина <span className="mx-3.5">|</span> {foods.length}
-                  </Button>
-                </Link>
-                <MenuBurger className="min-[1536px]:hidden" />
-              </div>
-            </div>
-            <div className="flex items-center justify-between max-2xl:hidden">
-              <ul className="flex items-center gap-8 font-semibold text-black-100">
-                {LINKS.map((link) => (
-                  <li key={link.id}>
-                    <a href="#">{link.value}</a>
-                  </li>
-                ))}
-              </ul>
-              <div className="flex items-center gap-7">
                 <Button intent="empty" onClick={() => setIsOpen(true)}>
                   Войти
                 </Button>

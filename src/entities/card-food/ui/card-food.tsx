@@ -1,9 +1,10 @@
 import { Button } from '@shared/ui/button'
 import { useUnit } from 'effector-react'
-import { foodChanged } from '../model'
+import { foodAdded } from '../model'
 
 interface Props {
   food: {
+    id: number
     image: string
     name: string
     desc: string
@@ -12,7 +13,7 @@ interface Props {
 }
 
 export const CardFood = ({ food }: Props) => {
-  const handleChanged = useUnit(foodChanged)
+  const handleFoodAdded = useUnit(foodAdded)
 
   return (
     <div className="flex h-full flex-col items-center">
@@ -25,7 +26,7 @@ export const CardFood = ({ food }: Props) => {
       <p className="mb-5 font-medium text-gray-100">{food.desc}</p>
       <div className="mt-auto flex w-full items-center justify-between">
         <span className="text-2xl font-bold">от {food.price} ₽</span>
-        <Button onClick={() => handleChanged(food)}>В корзину</Button>
+        <Button onClick={() => handleFoodAdded(food)}>В корзину</Button>
       </div>
     </div>
   )

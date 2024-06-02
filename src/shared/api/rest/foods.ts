@@ -11,6 +11,8 @@ export const foodsGetFx = createEffect(async () => {
 export const foodsToCartFx = createEffect(async ({ foods }) => {
   const { image, name, desc, price } = foods
 
+  console.log(foods)
+
   const { error } = await client.from('cart').insert({
     image,
     name,

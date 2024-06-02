@@ -16,6 +16,6 @@ chainRoute({
   route: authenticatedRoute,
   beforeOpen: {
     effect: foodsToCartFx,
-    mapParams: ({ params }) => console.log(params),
+    mapParams: ({ params }) => params,
   },
 })

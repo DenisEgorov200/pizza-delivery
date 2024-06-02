@@ -1,7 +1,8 @@
 import { createEvent, createStore } from 'effector'
 
-export const foodChanged = createEvent()
+export const foodAdded = createEvent()
+export const foodRemoved = createEvent()
 
 export const $foods = createStore([])
 
-$foods.on(foodChanged, (state, food) => [...state, food])
+$foods.on(foodAdded, (state, food) => [...state, food])

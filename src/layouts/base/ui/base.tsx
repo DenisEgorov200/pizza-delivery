@@ -29,7 +29,7 @@ export const LayoutBase = ({ children }: Props) => {
                   <img src="/icons/logo.svg" alt="fibo" />
                 </Link>
                 <h1 className="text-xl font-semibold text-black-200 max-lg:hidden">
-                  Доставка пасты <span className="text-yellow">Москва</span>
+                  Доставка пиццы <span className="text-yellow">Москва</span>
                 </h1>
               </div>
               <div className="flex items-center gap-7">

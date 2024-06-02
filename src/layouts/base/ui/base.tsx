@@ -6,20 +6,7 @@ import { SignIn } from '@widgets/sign-in'
 import { Link } from 'atomic-router-react'
 import { useUnit } from 'effector-react'
 import { ReactNode, useState } from 'react'
-
-const LINKS = [
-  { id: 0, value: 'Пицца' },
-  { id: 1, value: 'Паста' },
-  { id: 2, value: 'Супы' },
-  { id: 3, value: 'Салаты' },
-  { id: 4, value: 'Напитки' },
-  { id: 5, value: 'Десерты' },
-  { id: 6, value: 'Бакалея' },
-  { id: 7, value: 'Антипасти' },
-  { id: 8, value: 'Акции' },
-  { id: 9, value: 'Комбо' },
-  { id: 10, value: 'Контакты' },
-]
+import { $isAuth, signOutFx } from '../model'
 
 interface Props {
   children: ReactNode
@@ -27,6 +14,7 @@ interface Props {
 
 export const LayoutBase = ({ children }: Props) => {
   const foods = useUnit($foods)
+  const [isAuth, handleSignOut] = useUnit([$isAuth, signOutFx])
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -45,9 +33,15 @@ export const LayoutBase = ({ children }: Props) => {
                 </h1>
               </div>
               <div className="flex items-center gap-7">
-                <Button intent="empty" onClick={() => setIsOpen(true)}>
-                  Войти
-                </Button>
+                {isAuth ? (
+                  <Button intent="empty" onClick={() => handleSignOut()}>
+                    Выйти
+                  </Button>
+                ) : (
+                  <Button intent="empty" onClick={() => setIsOpen(true)}>
+                    Войти
+                  </Button>
+                )}
                 <Link to={routes.cart} params={foods}>
                   <Button className="text-brown">
                     Корзина <span className="mx-3.5">|</span> {foods.length}
